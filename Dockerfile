@@ -16,7 +16,11 @@ RUN apt-add-repository ppa:fish-shell/release-3 \
 RUN curl -s https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz | tar -v -C /usr/local -xz
 ENV PATH $PATH:/usr/local/go/bin
 RUN go get -u golang.org/x/tools/cmd/gopls \
-  && go get -v golang.org/x/tools/cmd/goimports
+  && go get -u golang.org/x/tools/cmd/goimports \
+  && go get -u github.com/stamblerre/gocode \
+  && go get -u github.com/uudashr/gopkgs/cmd/gopkgs \
+  && go get -u github.com/ramya-rao-a/go-outline \
+  && go get -u github.com/rogpeppe/godef
 
 # node 10 & yarn
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
