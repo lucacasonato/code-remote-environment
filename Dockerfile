@@ -15,7 +15,8 @@ RUN apt-add-repository ppa:fish-shell/release-3 \
 # go 1.12.5
 RUN curl -s https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz | tar -v -C /usr/local -xz
 ENV PATH $PATH:/usr/local/go/bin
-RUN go get -u golang.org/x/tools/cmd/gopls
+RUN go get -u golang.org/x/tools/cmd/gopls \
+  && go get -v golang.org/x/tools/cmd/goimports
 
 # node 10 & yarn
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
