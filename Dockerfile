@@ -1,5 +1,7 @@
 # Ubuntu 18.04 LTS base image 
-FROM ubuntu:18.04
+FROM ubuntu:18.10
+
+ENV HOME=/home/developer
 
 # tools
 RUN apt-get update -y -q && apt-get upgrade -y -q 
@@ -18,7 +20,7 @@ RUN go get -u golang.org/x/tools/cmd/gopls
 # node 10 & yarn
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
   && apt-get update -y -q \
-  && apt-get --no-install-recommends -y -q nodejs
+  && apt-get install --no-install-recommends -y -q nodejs
 RUN npm i -g yarn \
   && yarn global add n
 
@@ -26,8 +28,5 @@ RUN npm i -g yarn \
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 
 # user
-RUN useradd -ms /usr/bin/fish -g sudo developer
-USER developer
 WORKDIR /home/developer
-
-ENTRYPOINT [ "fish" ]
+COPY ./fish /home/developer/.config/fish
