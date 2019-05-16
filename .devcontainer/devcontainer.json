@@ -1,5 +1,11 @@
 {
   "name": "Dev Env",
   "dockerFile": "Dockerfile",
-  "extensions": ["esbenp.prettier-vscode", "rust-lang.rust", "ms-vscode.go"]
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "rust-lang.rust",
+    "ms-vscode.go",
+    "peterjausovec.vscode-docker"
+  ],
+  "runArgs": ["-v", "/var/run/docker.sock:/var/run/docker.sock"]
 }

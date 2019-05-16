@@ -34,5 +34,8 @@
   "gopls": {
     "usePlaceholders": true,
     "enhancedHover": true
+  },
+  "remote.extensionKind": {
+    "peterjausovec.vscode-docker": "workspace"
   }
 }
