@@ -26,7 +26,7 @@ RUN go get -u golang.org/x/tools/cmd/gopls \
   && go get -u github.com/sqs/goreturns \
   && go get -u github.com/acroca/go-symbols \
   && go get -u github.com/go-delve/delve/cmd/dlv
-RUN go get -x -d github.com/stamblerre/gocode \
+RUN go get -x -u github.com/stamblerre/gocode \
   && go build -o gocode-gomod github.com/stamblerre/gocode \
   && mv gocode-gomod $GOPATH/bin/
 
