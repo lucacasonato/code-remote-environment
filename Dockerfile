@@ -16,6 +16,7 @@ RUN apt-add-repository ppa:fish-shell/release-3 \
 RUN curl -s https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz | tar -v -C /usr/local -xz
 ENV PATH $PATH:/usr/local/go/bin
 RUN go get -u golang.org/x/tools/cmd/gopls \
+  && go get -u github.com/mdempsky/gocode \
   && go get -u golang.org/x/tools/cmd/goimports \
   && go get -u golang.org/x/tools/cmd/guru \
   && go get -u golang.org/x/tools/cmd/gorename \
@@ -26,7 +27,7 @@ RUN go get -u golang.org/x/tools/cmd/gopls \
   && go get -u github.com/sqs/goreturns \
   && go get -u github.com/acroca/go-symbols \
   && go get -u github.com/go-delve/delve/cmd/dlv
-RUN go get -x -u github.com/stamblerre/gocode \
+RUN go get -x -d github.com/stamblerre/gocode \
   && go build -o gocode-gomod github.com/stamblerre/gocode \
   && mv gocode-gomod $GOPATH/bin/
 
